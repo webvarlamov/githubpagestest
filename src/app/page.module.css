@@ -68,6 +68,10 @@
         .variant:hover{
           background-color: #A9A9A9;
         }
+
+        .selected{
+          background-color: #A9A9A9;
+        }
       }
 
       .hr{
@@ -86,6 +90,7 @@
         border: 2px solid #000000;
         color: #000000;
         background-color: #ffffff;
+        cursor: pointer;
       }
     }
 

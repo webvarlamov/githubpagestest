@@ -7,9 +7,10 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {GetData} from "@/app/request";
 
+const byDefault = "Chery";
 
 export default function Home() {
-    const [brand, setBrand] = useState("Chery");
+    const [brand, setBrand] = useState(byDefault);
     const [engine, setEngine] = useState("");
     const [complectation, setComplectation] = useState("");
 
@@ -34,6 +35,7 @@ export default function Home() {
         const fetchData = async () => {
             const result = await GetData(brand);
             setData(result);
+            console.log(result);
         };
         fetchData();
     }, [brand]);
@@ -44,7 +46,7 @@ export default function Home() {
     };
 
     const handleClickReset = () => {
-        setBrand("");
+        setBrand(byDefault);
         setEngine("");
         setComplectation("");
         setData([]);
@@ -60,9 +62,10 @@ export default function Home() {
                             <p className={styles.heading}>Бренд</p>
                             <div className={styles.container}>
                                 {brands.map((volume, index) => (
-                                    <p className={styles.variant}
-                                       key={index}
-                                       onClick={() => setBrand(brands[index])}
+                                    <p
+                                        className={`${styles.variant} ${volume === brand ? styles.selected : ''}`}
+                                        key={index}
+                                        onClick={() => setBrand(brands[index])}
                                     >
                                         {volume}
                                     </p>
@@ -101,7 +104,7 @@ export default function Home() {
                                 <div className={styles.card} key={index}>
                                     <Image src={Car} alt="car"/>
                                     <p className={styles.title}>{car.brandName} {car.modelName}</p>
-                                    <p className={styles.description}>{car.modificationName}</p>
+                                    <p className={styles.description}>{car.EngineSize} л. / {car.Power} л. с. / {car.Transmission}</p>
                                     <button className={styles.information}
                                             onClick={() => handleClickAbout(index)}
                                     >

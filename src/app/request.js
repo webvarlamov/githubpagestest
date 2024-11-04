@@ -10,7 +10,6 @@ export async function GetData(brand) {
             return;
         }
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (err) {
         console.log(err);

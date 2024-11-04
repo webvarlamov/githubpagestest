@@ -8,16 +8,18 @@ import mock1 from "@/app/assets/specifications/icon1.png";
 import mock2 from "@/app/assets/specifications/icon2.png";
 import mock3 from "@/app/assets/specifications/icon3.png";
 import {useEffect, useState} from "react";
+import Carousel from "@/app/components/Carousel/carousel";
 
 export default function page() {
     const [data, setData] = useState([]);
+    const [imgs, setImgs] = useState([Model]);
 
     useEffect(() => {
         const storedData = sessionStorage.getItem('data');
         if (storedData) {
             setData(JSON.parse(storedData));
+            setImgs(JSON.parse(storedData).photos.imgs.map(img => img.url));
         }
-        console.log(data);
     }, []);
 
 
@@ -36,11 +38,11 @@ export default function page() {
                         <div className={styles.specifications}>
                             <div className={styles.specification}>
                                 <Image src={mock1} alt="icon"/>
-                                <p className={styles.text}>2020 год выпуска</p>
+                                <p className={styles.text}>{data.modelYear} год выпуска</p>
                             </div>
                             <div className={styles.specification}>
                                 <Image src={mock2} alt="icon"/>
-                                <p className={styles.text}>{data.modificationName}</p>
+                                <p className={styles.text}>{data.EngineSize} л. / {data.Power} л. с. / {data.Transmission}</p>
                             </div>
                             <div className={styles.specification}>
                                 <Image src={mock3} alt="icon"/>
@@ -49,7 +51,7 @@ export default function page() {
                         </div>
                     </div>
                     <div>
-                        <Image src={Model} alt="model"/>
+                        <Carousel images={imgs}/>
                     </div>
                 </div>
             </main>
@@ -63,6 +65,7 @@ export default function page() {
                 <div>
                     <Image className={styles.car} src={Car} alt="car"/>
                 </div>
+
             </footer>
         </div>
     )
