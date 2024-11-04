@@ -1,0 +1,49 @@
+.page{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-tactic-sans);
+
+}
+
+
+.main{
+  padding: 70px 100px 50px 100px;
+
+}
+
+.footer{
+  display: flex;
+  padding: 70px 100px 50px 100px;
+  background-color: #00A8CD;
+  color: #ffffff;
+
+  .car{
+    position: relative;
+  }
+  .content{
+    position: absolute;
+    .title{
+      margin-top: 20px;
+      font-size: 40px;
+    }
+
+    .description{
+      margin-top: 50px;
+      width: 480px;
+      font-size: 28px;
+
+    }
+
+    .last{
+      margin-top: 50px;
+      width: 440px;
+      padding: 23px 127px;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-tactic-sans);
+      color: #ffffff;
+      background-color: #CA0100;
+    }
+  }
+}
