@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     <body className={tacticSansReg.variable}>
       <>
           <header className={styles.header}>
-              <Image src={Logo} alt="logo" onClick={() => router.push('/')}/>
+              <Image className={styles.logo} src={Logo} alt="logo" onClick={() => router.push('/')}/>
               <hr className={styles.hr}/>
               <p className={styles.compony}>Официальный дилер Максимум </p>
           </header>

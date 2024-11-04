@@ -8,8 +8,67 @@
 
 
 .main{
+  display: flex;
+  flex-direction: column;
   padding: 70px 100px 50px 100px;
 
+  .company{
+    .brand{
+      font-size: 40px;
+    }
+    .vin{
+      margin-top: 10px;
+      font-size: 16px;
+      color: #9AA7AD;
+    }
+  }
+  .container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    .information{
+
+      .general{
+        margin-top: 20px;
+        padding: 20px 0 20px 20px;
+        border-radius: 12px;
+        background-color: #F4F7F8;
+      }
+
+      .general:first-child{
+        margin-top: 0;
+      }
+
+      .price{
+        font-size: 32px;
+        color: #CA0100;
+      }
+
+      .additional{
+        margin-top: 50px;
+        font-size: 40px;
+      }
+      .specifications{
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 16px;
+        background-color: #F4F7F8;
+        .specification{
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+          .text{
+            margin-left: 20px;
+            font-size: 28px;
+          }
+        }
+        .specification:first-child{
+          margin-top: 0;
+        }
+      }
+    }
+  }
 }
 
 .footer{
