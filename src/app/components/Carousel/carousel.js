@@ -1,10 +1,19 @@
-"use client";
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './carousel.module.css';
-import Image from "next/image"; // Импортируем стили
 
 const Carousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const preloadImages = (images) => {
+        images.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+        });
+    };
+
+    useEffect(() => {
+        preloadImages(images);
+    }, [images]);
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -17,7 +26,14 @@ const Carousel = ({ images }) => {
     return (
         <div className={styles.slider}>
             <button className={`${styles.prev} ${styles.button}`} onClick={prevSlide}>❮</button>
-            <Image width={876} height={719} src={images[currentIndex]} alt={`slide ${currentIndex}`} className={styles.image} />
+            <img
+                src={images[currentIndex]}
+                className={styles.img}
+                width={876}
+                height={719}
+                alt={`slide ${currentIndex}`}
+                loading="lazy"
+            />
             <button className={`${styles.next} ${styles.button}`} onClick={nextSlide}>❯</button>
         </div>
     );

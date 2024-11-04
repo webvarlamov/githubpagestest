@@ -10,19 +10,19 @@ import {GetData} from "@/app/request";
 const byDefault = "Chery";
 
 export default function Home() {
+    const router = useRouter();
+    const [isMobile, setIsMobile] = useState(false);
+
     const [brand, setBrand] = useState(byDefault);
     const [engine, setEngine] = useState("");
     const [complectation, setComplectation] = useState("");
-
     const [data, setData] = useState([]);
-    const [isMobile, setIsMobile] = useState(false);
 
     const checkDeviceType = () => {
         const userAgent = navigator.userAgent.toLowerCase();
         setIsMobile(/mobile|iphone|ipad|ipod|android|blackberry|mini|windowssce|palm/i.test(userAgent));
     };
 
-    const router = useRouter();
     useEffect(() => {
         checkDeviceType();
         window.addEventListener('resize', checkDeviceType);
@@ -33,12 +33,16 @@ export default function Home() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await GetData(brand);
-            setData(result);
-            console.log(result);
+            try {
+                const result = await GetData(brand);
+                setData(result);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
         };
         fetchData();
     }, [brand]);
+
 
     const handleClickAbout = (count) => {
         sessionStorage.setItem('data', JSON.stringify(data[count]));
@@ -63,7 +67,7 @@ export default function Home() {
                             <div className={styles.container}>
                                 {brands.map((volume, index) => (
                                     <p
-                                        className={`${styles.variant} ${volume === brand ? styles.selected : ''}`}
+                                        className={`${styles.variant} ${volume === brand ? styles.selected : ''} ${index >= 2 ? styles.newLine : ''}`}
                                         key={index}
                                         onClick={() => setBrand(brands[index])}
                                     >

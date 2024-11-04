@@ -1,7 +1,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-tactic-sans: 'Tactic Sans', sans-serif;
+  --font-tactic-sans-reg: 'Tactic Sans', sans-serif;
+  --font-tactic-sans-med: 'Tactic Sans', sans-serif;
+  --font-tactic-sans-bold: 'Tactic Sans', sans-serif;
+  --font-tactic-sans-black: 'Tactic Sans', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,9 +39,14 @@ a {
   text-decoration: none;
 }
 
+p{
+  font-weight: 400;
+  font-family: var(--font-tactic-sans-reg);
+}
+
 button{
   font-size: 28px;
-  font-family: var(--font-tactic-sans);
+  font-family: var(--font-tactic-sans-bold);
 }
 
 @media (prefers-color-scheme: dark) {
