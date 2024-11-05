@@ -4,50 +4,50 @@ import styles from "./layout.module.css";
 import localFont from "next/font/local";
 import Image from "next/image";
 import {useRouter} from "next/navigation";
-import Logo from "@/app/assets/logo.svg";
 import {useEffect} from "react";
-import Advertisemet from "@/app/assets/advertisemet.png";
+import Logo from "@/app/assets/logo.svg";
+import {GetData} from "@/app/request";
 
 const tacticSansReg = localFont({
-  src: "./fonts/TacticSansReg.woff",
+  src: "assets/fonts/TacticSansReg.woff",
   variable: "--font-tactic-sans-reg",
 });
 
 const tacticSansMed = localFont({
-    src: "./fonts/TacticSansMed.woff",
+    src: "assets/fonts/TacticSansMed.woff",
     variable: "--font-tactic-sans-med",
 });
 
 const tacticSansBold = localFont({
-    src: "./fonts/TacticSansBold.woff",
+    src: "assets/fonts/TacticSansBold.woff",
     variable: "--font-tactic-sans-bold",
 });
 
 const tacticSansBlack = localFont({
-    src: "./fonts/TacticSansBlack.woff",
+    src: "assets/fonts/TacticSansBlack.woff",
     variable: "--font-tactic-sans-black",
 });
 
+const byDefault = "Chery";
 export default function RootLayout({ children }) {
     const router = useRouter();
 
-    const checkDeviceType = () => {
-        const userAgent = navigator.userAgent.toLowerCase();
-        const mobile = /mobile|iphone|ipad|ipod|android|blackberry|mini|windowssce|palm/i.test(userAgent);
-        sessionStorage.setItem('mobile', JSON.stringify(mobile));
-    };
-
     useEffect(() => {
-        checkDeviceType();
-        window.addEventListener('resize', checkDeviceType);
-        return () => {
-            window.removeEventListener('resize', checkDeviceType);
+        const fetchData = async () => {
+            try {
+                const result = await GetData(byDefault);
+                sessionStorage.setItem('byDefault', JSON.stringify(result));
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
         };
+        fetchData();
     }, []);
 
     return (
         <html lang="en">
         <head>
+            <link rel='icon' href='/favicon.ico'/>
             <title>Максимум</title>
         </head>
         <body className={`${tacticSansReg.variable} ${tacticSansBlack.variable} ${tacticSansMed.variable} ${tacticSansBold.variable}`}>
@@ -57,17 +57,6 @@ export default function RootLayout({ children }) {
                   <p className={styles.company}>Официальный дилер Максимум </p>
             </header>
             {children}
-            <footer className={styles.footer}>
-                <div className={styles.content}>
-                    <p className={styles.title}>Кредит на новый Chery Tiggo</p>
-                    <p className={styles.description}>Оформите кредит на любой автомобиль ассортимента дилерского
-                        центра «Максимум»</p>
-                    <button className={styles.next}>Оформить</button>
-                </div>
-                <div>
-                    <Image className={styles.car} src={Advertisemet} alt="car"/>
-                </div>
-            </footer>
         </body>
         </html>
     );

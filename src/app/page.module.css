@@ -1,3 +1,9 @@
+.mobile{
+  @media screen and (max-width: 400px){
+    display: none;
+  }
+}
+
 .main{
   padding: 100px 220px 160px 220px;
   @media screen and (max-width: 400px){
@@ -90,6 +96,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
+      width: 900px;
       @media screen and (max-width: 400px){
         width: 280px;
         justify-content: center;

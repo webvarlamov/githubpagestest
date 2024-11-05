@@ -1,14 +1,14 @@
 "use client";
 import styles from "./page.module.css";
 import Image from "next/image";
+import {useEffect, useState} from "react";
+import Carousel from "@/app/components/Carousel/carousel";
 import Model from "@/app/assets/mock2.png";
 import Warranty from "@/app/assets/warranty.svg";
-
 import icon1 from "@/app/assets/specifications/icon1.png";
 import icon2 from "@/app/assets/specifications/icon2.png";
 import icon3 from "@/app/assets/specifications/icon3.png";
-import {useEffect, useState} from "react";
-import Carousel from "@/app/components/Carousel/carousel";
+import Advertisemet from "@/app/assets/advertisemet.png";
 
 function formatPrice(price) {
     return price.toLocaleString('ru-RU', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
@@ -17,10 +17,10 @@ function formatPrice(price) {
 export default function About() {
     const [data, setData] = useState([]);
     const [imgs, setImgs] = useState([Model]);
-    const [price, setPrice] = useState([Model]);
+    const [price, setPrice] = useState("");
 
     useEffect(() => {
-        const storedData = sessionStorage.getItem('data');
+        const storedData = sessionStorage.getItem('model');
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             setData(parsedData);
@@ -31,6 +31,7 @@ export default function About() {
     }, []);
 
     return (
+        <>
             <main className={styles.main}>
                 <div className={styles.model}>
                     <p className={styles.brand}>{data.brandName} {data.modelName}</p>
@@ -51,7 +52,8 @@ export default function About() {
                             </div>
                             <div className={styles.specification}>
                                 <Image className={styles.icon} src={icon2} alt="icon"/>
-                                <p className={styles.text}>{data.EngineSize} л. / {data.Power} л. с. / {data.Transmission}</p>
+                                <p className={styles.text}>{data.EngineSize} л. / {data.Power} л. с.
+                                    / {data.Transmission}</p>
                             </div>
                             <div className={styles.specification}>
                                 <Image className={styles.icon} src={icon3} alt="icon"/>
@@ -62,5 +64,17 @@ export default function About() {
                     <Carousel images={imgs}/>
                 </div>
             </main>
+            <footer className={styles.footer}>
+                <div className={styles.content}>
+                    <p className={styles.title}>Кредит на новый Chery Tiggo</p>
+                    <p className={styles.description}>Оформите кредит на любой автомобиль ассортимента дилерского
+                        центра «Максимум»</p>
+                    <button className={styles.next}>Оформить</button>
+                </div>
+                <div>
+                    <Image className={styles.car} src={Advertisemet} alt="car"/>
+                </div>
+            </footer>
+        </>
     )
 }
