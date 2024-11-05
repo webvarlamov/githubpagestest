@@ -18,18 +18,16 @@ export default function Home() {
     const [complectation, setComplectation] = useState("");
     const [data, setData] = useState([]);
 
-    const checkDeviceType = () => {
-        const userAgent = navigator.userAgent.toLowerCase();
-        setIsMobile(/mobile|iphone|ipad|ipod|android|blackberry|mini|windowssce|palm/i.test(userAgent));
-    };
 
+    const storedData = sessionStorage.getItem('mobile');
     useEffect(() => {
-        checkDeviceType();
-        window.addEventListener('resize', checkDeviceType);
-        return () => {
-            window.removeEventListener('resize', checkDeviceType);
-        };
-    }, []);
+        if(storedData === "true"){
+            setIsMobile(true);
+        }
+        else {
+            setIsMobile(false);
+        }
+    }, [storedData]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,24 +55,24 @@ export default function Home() {
     };
 
     return (
-        <div className={styles.page}>
-            {isMobile ? (<div>nhifvebnnesov</div>) : (
-                <main className={styles.main}>
-                    <p className={styles.brand}>Автомобили Chery в СПб</p>
-                    <div className={styles.content}>
-                        <div className={styles.filter}>
-                            <p className={styles.heading}>Бренд</p>
-                            <div className={styles.container}>
-                                {brands.map((volume, index) => (
-                                    <p
-                                        className={`${styles.variant} ${volume === brand ? styles.selected : ''} ${index >= 2 ? styles.newLine : ''}`}
-                                        key={index}
-                                        onClick={() => setBrand(brands[index])}
-                                    >
-                                        {volume}
-                                    </p>
-                                ))}
-                            </div>
+        <main className={styles.main}>
+            <p className={styles.brand}>Автомобили Chery в СПб</p>
+            <div className={styles.content}>
+                <div className={styles.filter}>
+                    {isMobile ? null :(<p className={styles.heading}>Бренд</p>)}
+                    <div className={styles.container}>
+                        {brands.map((volume, index) => (
+                            <p
+                                className={`${styles.variant} ${volume === brand ? styles.selected : ''}`}
+                                key={index}
+                                onClick={() => setBrand(brands[index])}
+                            >
+                                {volume}
+                            </p>
+                        ))}
+                    </div>
+                    {isMobile ? null :(
+                        <>
                             <hr className={styles.hr}/>
                             <p className={styles.heading}>Объем двигателя</p>
                             <div className={styles.container}>
@@ -102,24 +100,26 @@ export default function Home() {
                             <hr className={styles.hr}/>
                             <button className={styles.resetButton} onClick={() => handleClickReset()}>Сбросить фильтр
                             </button>
+                        </>
+                    )}
+                </div>
+                <div className={styles.cards}>
+                    {data.length === 0 ? <p>Такой модели, к сожалению, нет в салоне. Попробуйте зайти позднее.</p> : (
+                        data.map((car, index) => (
+                        <div className={styles.card} key={index}>
+                            <Image className={styles.car} src={Car} alt="car"/>
+                            <p className={styles.title}>{car.brandName} {car.modelName}</p>
+                            <p className={styles.description}>{car.EngineSize} л. / {car.Power} л. с.
+                                / {car.Transmission}</p>
+                            <button className={styles.information}
+                                    onClick={() => handleClickAbout(index)}
+                            >
+                                Подробнее
+                            </button>
                         </div>
-                        <div className={styles.cards}>
-                            {data.map((car, index) => (
-                                <div className={styles.card} key={index}>
-                                    <Image src={Car} alt="car"/>
-                                    <p className={styles.title}>{car.brandName} {car.modelName}</p>
-                                    <p className={styles.description}>{car.EngineSize} л. / {car.Power} л. с. / {car.Transmission}</p>
-                                    <button className={styles.information}
-                                            onClick={() => handleClickAbout(index)}
-                                    >
-                                        Подробнее
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </main>
-            )}
-        </div>
+                    )))}
+                </div>
+            </div>
+        </main>
     );
 }

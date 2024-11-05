@@ -29,8 +29,6 @@ const Carousel = ({ images }) => {
             <img
                 src={images[currentIndex]}
                 className={styles.img}
-                width={876}
-                height={719}
                 alt={`slide ${currentIndex}`}
                 loading="lazy"
             />

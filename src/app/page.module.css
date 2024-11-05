@@ -1,51 +1,33 @@
-.page{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.header{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 100px;
-  width: 100%;
-  height: 108px;
-  gap: 15px;
-  color: #ffffff;
-  background-color: #010C13;
-
-  .hr{
-    width: 2px;
-    height: 68px;
-  }
-
-  .logo{
-    cursor: pointer;
-  }
-
-  .compony{
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
 .main{
   padding: 100px 220px 160px 220px;
-
+  @media screen and (max-width: 400px){
+    padding: 30px 20px;
+  }
   .brand{
     font-family: var(--font-tactic-sans-black);
     font-size: 40px;
-    line-height: 56px;
+    @media screen and (max-width: 400px){
+      font-size: 20px;
+    }
   }
 
   .content{
     display: flex;
-    gap: 60px;
+    gap: 50px;
     margin-top: 50px;
+
+    @media screen and (max-width: 400px){
+      margin-top: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+    }
     .filter{
       width: 500px;
-
+      @media screen and (max-width: 400px){
+        width: 100%;
+      }
       .heading{
         font-family: var(--font-tactic-sans-med);
         margin-top: 30px;
@@ -57,13 +39,19 @@
         flex-wrap: wrap;
         margin: 20px 0;
         .variant{
-          margin-top: 5px;
-          margin-right: 5px;
+          margin: 5px 5px 0 0;
           padding: 8px 20px;
           border-radius: 8px;
-          border: 3px solid #000000;
+          border: 1px solid #000000;
           cursor: pointer;
           font-size: 16px;
+
+          @media screen and (max-width: 400px){
+            margin: 2px 2px 0 0;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 8px;
+          }
         }
 
         .variant:hover{
@@ -78,7 +66,7 @@
 
       .hr{
         padding: 0;
-        width: 100%;
+        width: 500px;
         height: 0;
         border: none;
         border-top: 2px solid #9AA7AD;
@@ -89,7 +77,7 @@
         padding: 23px 102px;
         width: 100%;
         border-radius: 8px;
-        border: 3px solid #000000;
+        border: 2px solid #000000;
         font-family: var(--font-tactic-sans-bold);
         font-size: 28px;
         color: #000000;
@@ -102,19 +90,38 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      width: 920px;
-      .card{
-        margin: 10px;
+      @media screen and (max-width: 400px){
+        width: 280px;
+        justify-content: center;
+      }
 
+      .card{
+        margin: 5px;
+
+        @media screen and (max-width: 400px){
+          width: 280px;
+        }
+        .car{
+          @media screen and (max-width: 400px){
+            width: 280px;
+            height: 180px;
+          }
+        }
         .title{
           margin-top: 10px;
           font-size: 32px;
           font-family: var(--font-tactic-sans-black);
+          @media screen and (max-width: 400px){
+            font-size: 16px;
+          }
         }
         .description{
           margin-top: 10px;
           font-size: 28px;
           color: #9AA7AD;
+          @media screen and (max-width: 400px){
+            font-size: 14px;
+          }
         }
 
         .information{
@@ -126,6 +133,9 @@
           color: #ffffff;
           background-color: #CA0100;
           cursor: pointer;
+          @media screen and (max-width: 400px){
+            padding: 12px 75px;
+          }
         }
       }
 
@@ -133,3 +143,4 @@
   }
 
 }
+

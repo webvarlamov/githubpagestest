@@ -47,6 +47,9 @@ p{
 button{
   font-size: 28px;
   font-family: var(--font-tactic-sans-bold);
+  @media screen and (max-width: 400px){
+    font-size: 14px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
