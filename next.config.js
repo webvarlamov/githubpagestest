@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-    basePath: '/test-project-maximum',
     images: {
         domains: ['photobank.maximum.expert'],
+        unoptimized: true, // Отключаем оптимизацию изображений
     },
+    output: 'export',
 };
 
 module.exports = nextConfig;
+
+
