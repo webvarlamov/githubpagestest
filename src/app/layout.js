@@ -1,6 +1,6 @@
 "use client";
-import "./Normalize.css";
-import styles from "./layout.module.css";
+import "./Normalize.scss";
+import styles from "./layout.module.scss";
 import localFont from "next/font/local";
 import Image from "next/image";
 import {useRouter} from "next/navigation";

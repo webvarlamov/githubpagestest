@@ -17,7 +17,7 @@
     border: none;
     border-radius: 10px;
     font-size: 32px;
-    background-color: #F4F7F8;
+    background-color: var(--dim-color);
     cursor: pointer;
     @media screen and (max-width: 400px){
         font-size: 16px;
@@ -27,8 +27,8 @@
 }
 
 .button:hover{
-    color: #ffffff;
-    background-color: #CA0100;
+    color: var(--wight);
+    background-color: var(--replete-color);
 }
 
 .img{

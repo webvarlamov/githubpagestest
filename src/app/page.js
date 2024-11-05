@@ -1,5 +1,5 @@
 "use client";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Image from "next/image";
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
@@ -14,16 +14,15 @@ export default function Home() {
     const [engine, setEngine] = useState("");
     const [complectation, setComplectation] = useState("");
     const [data, setData] = useState([]);
-
+    
     useEffect(() => {
-        const storedData = sessionStorage.getItem('byDefault');
-        if (storedData) {
-            const parsedData = JSON.parse(storedData);
-            setData(parsedData);
+        if(brand === byDefault){
+            const storedData = sessionStorage.getItem('byDefault');
+            if (storedData) {
+                const parsedData = JSON.parse(storedData);
+                setData(parsedData);
+            }
         }
-    }, []);
-
-    useEffect(() => {
         const fetchData = async () => {
             try {
                 const result = await GetData(brand);
@@ -34,8 +33,7 @@ export default function Home() {
         };
         fetchData();
     }, [brand]);
-
-
+    
     const handleClickAbout = (count) => {
         sessionStorage.setItem('model', JSON.stringify(data[count]));
         router.push('/about');
@@ -45,7 +43,6 @@ export default function Home() {
         setBrand(byDefault);
         setEngine("");
         setComplectation("");
-        setData([]);
     };
 
     return (

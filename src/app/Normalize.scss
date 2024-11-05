@@ -1,17 +1,14 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --wight:  #ffffff;
+  --black: #000000;
+  --replete-color: #CA0100;
+  --dim-color: #F4F7F8;
+  --header-color: #010C13;
+  --font-light: #9AA7AD;
   --font-tactic-sans-reg: 'Tactic Sans', sans-serif;
   --font-tactic-sans-med: 'Tactic Sans', sans-serif;
   --font-tactic-sans-bold: 'Tactic Sans', sans-serif;
   --font-tactic-sans-black: 'Tactic Sans', sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 html,
@@ -49,11 +46,5 @@ button{
   font-family: var(--font-tactic-sans-bold);
   @media screen and (max-width: 400px){
     font-size: 14px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
   }
 }

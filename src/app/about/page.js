@@ -1,5 +1,5 @@
 "use client";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import Carousel from "@/app/components/Carousel/carousel";

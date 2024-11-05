@@ -9,6 +9,7 @@
   @media screen and (max-width: 400px){
     padding: 30px 20px;
   }
+
   .brand{
     font-family: var(--font-tactic-sans-black);
     font-size: 40px;
@@ -21,7 +22,6 @@
     display: flex;
     gap: 50px;
     margin-top: 50px;
-
     @media screen and (max-width: 400px){
       margin-top: 0;
       flex-direction: column;
@@ -29,11 +29,13 @@
       align-items: center;
       gap: 0;
     }
+
     .filter{
       width: 500px;
       @media screen and (max-width: 400px){
         width: 100%;
       }
+
       .heading{
         font-family: var(--font-tactic-sans-med);
         margin-top: 30px;
@@ -44,14 +46,14 @@
         display: flex;
         flex-wrap: wrap;
         margin: 20px 0;
+
         .variant{
           margin: 5px 5px 0 0;
           padding: 8px 20px;
           border-radius: 8px;
-          border: 1px solid #000000;
+          border: 1px solid var(--black);
           cursor: pointer;
           font-size: 16px;
-
           @media screen and (max-width: 400px){
             margin: 2px 2px 0 0;
             padding: 4px 10px;
@@ -67,7 +69,6 @@
         .selected{
           background-color: #A9A9A9;
         }
-
       }
 
       .hr{
@@ -75,7 +76,7 @@
         width: 500px;
         height: 0;
         border: none;
-        border-top: 2px solid #9AA7AD;
+        border-top: 2px solid var(--font-light);
       }
 
       .resetButton{
@@ -83,11 +84,11 @@
         padding: 23px 102px;
         width: 100%;
         border-radius: 8px;
-        border: 2px solid #000000;
+        border: 2px solid var(--black);
         font-family: var(--font-tactic-sans-bold);
         font-size: 28px;
-        color: #000000;
-        background-color: #ffffff;
+        color: var(--black);
+        background-color: var(--wight);
         cursor: pointer;
       }
     }
@@ -104,16 +105,17 @@
 
       .card{
         margin: 5px;
-
         @media screen and (max-width: 400px){
           width: 280px;
         }
+
         .car{
           @media screen and (max-width: 400px){
             width: 280px;
             height: 180px;
           }
         }
+
         .title{
           margin-top: 10px;
           font-size: 32px;
@@ -122,10 +124,11 @@
             font-size: 16px;
           }
         }
+
         .description{
           margin-top: 10px;
           font-size: 28px;
-          color: #9AA7AD;
+          color: var(--font-light);
           @media screen and (max-width: 400px){
             font-size: 14px;
           }
@@ -137,17 +140,14 @@
           padding: 23px 127px;
           border: none;
           border-radius: 8px;
-          color: #ffffff;
-          background-color: #CA0100;
+          color: var(--wight);
+          background-color: var(--replete-color);
           cursor: pointer;
           @media screen and (max-width: 400px){
             padding: 12px 75px;
           }
         }
       }
-
     }
   }
-
 }
-

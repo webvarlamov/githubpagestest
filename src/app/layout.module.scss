@@ -6,9 +6,8 @@
     width: 100%;
     height: 108px;
     gap: 15px;
-    color: #ffffff;
-    background-color: #010C13;
-
+    color: var(--wight);
+    background-color: var(--header-color);
     @media screen and (max-width: 400px){
         justify-content: center;
         padding: 0 25px;
