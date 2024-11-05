@@ -1,9 +1,9 @@
 {
-  "/assets/specifications/icon1.png/route": "app/assets/specifications/icon1.png/route.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/assets/specifications/icon2.png/route": "app/assets/specifications/icon2.png/route.js",
   "/assets/specifications/icon3.png/route": "app/assets/specifications/icon3.png/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/assets/specifications/icon2.png/route": "app/assets/specifications/icon2.png/route.js",
+  "/assets/specifications/icon1.png/route": "app/assets/specifications/icon1.png/route.js",
   "/about/page": "app/about/page.js",
   "/page": "app/page.js"
 }
