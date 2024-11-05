@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Формулировка задания
 
-## Getting Started
+1. Реализовать страницу с витриной автомобилей. Витрина должна быть адаптивна для мобильных устройств, на мобильных устройствах фильтрация* только по бренду. Логотип должен вести на главную страницу.
+*Обязательно должна быть реализована фильтрация по бренду, по желанию можно реализовать более функциональный фильтр
+2. Реализовать страницу автомобиля, на которую ведут карточки из витрины. На странице автомобиля должен быть реализован слайдер с фотографиями. Страница должна быть адаптивна для мобильных устройств. (нужно сделать без макета)
 
-First, run the development server:
+В рамках задачи необходимо использовать данные по брендам: Chery, Haval, Geely, Exeed, Omoda, Changan, Jaecoo, используя представленное ниже АПИ.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Доступно по адресу https://test2.maximum-haval.ru/public/test-task/v1/brand/{brand}
 
-You can start editing the page by modifying `app/page.js`. The page page-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Постраничность можно проигнорировать и выводить только первую страницу по каждому из запросов.
 
-## Learn More
+# Требования
 
-To learn more about Next.js, take a look at the following resources:
+## Общие требования
+1. Стэк разработки: Next.JS, страница должна выводиться уже отрендереной с данными из АПИ (SSR), последующие запросы к АПИ должны выполняться без перезагрузки страницы.
+2. Код должен соответствовать стандартам ES2015+.
+3. Использовать функциональные компоненты React и Hooks-API.
+4. Для запросов к АПИ использовать Fetch-API.
+5. Внешний вид страницы должен соответствовать макету и визуально не отличаться на современных десктопных и мобильных браузерах (за исключением числа колонок в строке).
+6. Проект должен быть задеплоен на Vercel или аналоги, код должен быть выложен на Github.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Требования к верстке:
+1. Модульная структура (css-modules).
+2. Имена классов без префиксов/постфиксов названия модуля.
+3. Normalize.css для сброса стандартных стилей.
+4. Селекторы состоят из классов, псевдоклассов и имен тэгов, начинаются всегда с класса, тэгом могут только заканчиваться.
+5. Приветствуется использование препроцессора (SCSS).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,5 +1,5 @@
 "use client";
-import "./globals.css";
+import "./Normalize.css";
 import styles from "./layout.module.css";
 import localFont from "next/font/local";
 import Image from "next/image";
